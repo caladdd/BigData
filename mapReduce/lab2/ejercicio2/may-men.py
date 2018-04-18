@@ -6,14 +6,15 @@ class MayorMenor(MRJob):
     def mapper(self, _, line):
 
 	empresas = line.split(",")
-	yield empresas[0], float(empresas[1])
+        temp = [float(empresas[1]),empresas[2]]
+	yield empresas[0], temp
 
     def reducer(self, key, values):
-        cont =0
-	mset = set(values)
-	for v in mset:
-            cont+=1
-	yield key, cont
+        lista = list(values)
+        print(lista)
+        maxi = max(lista)
+        mini = min(lista)
+	yield key, "max= "+str(maxi[1])+" min= "+str(mini[1])
 
 if __name__ == '__main__':
     MayorMenor.run()
