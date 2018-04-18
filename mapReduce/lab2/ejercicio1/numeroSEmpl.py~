@@ -1,23 +1,21 @@
 from mrjob.job import MRJob
 import numpy as np
 
-class EmpresasPromSE(MRJob):
+class EmpleadosPromSE(MRJob):
 
     def mapper(self, _, line):
 
-	empresas = line.split(",")
-	yield empresas[1], int(empresas[0])
+	empleado = line.split(",")
+	yield empleado[1], int(empleado[0])
 
     def reducer(self, key, values):
 	cont = 0
-        lista = []
-	for c in values:
-            lista.append(c)
+        lista = list(values)
         mset = set(lista)
         for v in mset:
             cont+=1
-	yield key, cont
+	yield key, len(mset)
 
 if __name__ == '__main__':
-    EmpresasPromSE.run()
+    EmpleadosPromSE.run()
 
