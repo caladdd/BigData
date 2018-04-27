@@ -5,13 +5,14 @@ class EmpleadosPromSE(MRJob):
 
     def mapper(self, _, line):
 
-        empleado = line.split(",")
-        yield empleado[0], int(empleado[2])
+	empleado = line.split(",")
+	yield empleado[1], int(empleado[0])
 
     def reducer(self, key, values):
-        lista = list(values)
-        #print(np.mean(lista))
-        yield key, sum(lista)/len(lista)
+	lista = list(values)
+        mset = set(lista)
+	yield key, len(mset)
+
 
 if __name__ == '__main__':
     EmpleadosPromSE.run()

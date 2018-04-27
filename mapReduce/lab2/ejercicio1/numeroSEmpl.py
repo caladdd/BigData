@@ -11,7 +11,7 @@ class EmpleadosPromSE(MRJob):
     def reducer(self, key, values):
 	lista = list(values)
         mset = set(lista)
-	yield key, len(mset)
+	yield "Empleado " + key, "numeros de SE " + str(len(mset))
 
 if __name__ == '__main__':
     EmpleadosPromSE.run()
