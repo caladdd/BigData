@@ -2,7 +2,8 @@ from mrjob.job import MRJob
 from mrjob.step import MRStep
 import numpy as np
 
-class MaxPelvisDay(MRJob):
+
+class MinPelvisDay(MRJob):
     def steps(self):
         return[
             MRStep(mapper = self.mapper1,
@@ -22,17 +23,15 @@ class MaxPelvisDay(MRJob):
         yield None, (key, sum(values))
 
     def reducer2(self, key, values):
-        maxi = 0
+        mini = float("inf")
         date = []
         for va in values:
-            if maxi < va[1]:
-                print va[1]
-                maxi = va[1]
+            if mini > va[1]:
+                mini = va[1]
                 date.append(va[0])
-
         for a in date:
-            yield a, maxi
+            yield a, mini
 
 
 if __name__ == '__main__':
-    MaxPelvisDay.run()
+    MinPelvisDay.run()

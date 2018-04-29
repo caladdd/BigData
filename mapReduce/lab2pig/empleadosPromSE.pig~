@@ -1,0 +1,4 @@
+empleado = LOAD '/user/jcaladh/datasets/empleados.txt' AS (SE:int,Id_empleado:int,salario:float,año:chararray);
+group = GROUP empleados by empleado.SE;
+avg = FOREACH group generate AVG(empleado.salario);
+DUMP avg
