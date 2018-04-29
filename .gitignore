@@ -1,2 +1,4 @@
-# python ~
+# ignore python ~
 *.py~
+# ignore pig ~
+*.pig~
