@@ -2,3 +2,4 @@
 *.py~
 # ignore pig ~
 *.pig~
+*.log
