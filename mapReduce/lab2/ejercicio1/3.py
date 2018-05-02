@@ -1,7 +1,7 @@
 from mrjob.job import MRJob
 import numpy as np
 
-class EmpleadosPromSE(MRJob):
+class NumeroEmpleadosSE(MRJob):
 
     def mapper(self, _, line):
 
@@ -14,5 +14,5 @@ class EmpleadosPromSE(MRJob):
 	yield "Empleado " + key, "numeros de SE " + str(len(mset))
 
 if __name__ == '__main__':
-    EmpleadosPromSE.run()
+    NumeroEmpleadosSE.run()
 
