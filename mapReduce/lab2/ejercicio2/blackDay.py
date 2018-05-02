@@ -10,11 +10,15 @@ class BlackDay(MRJob):
         yield empresas[0], temp
 
     def reducer(self, key, values):
-        lista = list(values)
-        print(lista)
-        maxi = max(lista)
-        mini = min(lista)
-        yield key, "max= "+str(maxi[1])+" min= "+str(mini[1])
+        fecha = ""
+        anterior = 0
+        for v in values:
+            if anterior > 0 and v[0] < anterior:
+                break
+            anterior = v[0]
+            fecha = v[1]
+
+        yield key, "fecha "+ fecha
 
 
 if __name__ == '__main__':

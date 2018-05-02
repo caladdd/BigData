@@ -23,15 +23,13 @@ class MaxPelvisDay(MRJob):
 
     def reducer2(self, key, values):
         maxi = 0
-        date = []
+        date = ''
         for va in values:
             if maxi < va[1]:
-                print va[1]
                 maxi = va[1]
-                date.append(va[0])
-
-        for a in date:
-            yield a, maxi
+                date = va[0]
+                
+        yield date , maxi
 
 
 if __name__ == '__main__':
