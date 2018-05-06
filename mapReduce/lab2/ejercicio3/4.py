@@ -1,6 +1,6 @@
 from mrjob.job import MRJob
 from mrjob.step import MRStep
-import numpy as np
+#import numpy as np
 
 class NUserEM(MRJob):
     def steps(self):
@@ -18,7 +18,7 @@ class NUserEM(MRJob):
         acum = 0
         for a in userM:
             acum = acum + a[1]
-        print userM
+        #print userM
         yield key, "numero de usuarios "+str(len(userM))+" rating "+str(acum/len(userM))
 
 if __name__ == '__main__':

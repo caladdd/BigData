@@ -1,5 +1,5 @@
 from mrjob.job import MRJob
-import numpy as np
+#import numpy as np
 
 class NumeroEmpleadosSE(MRJob):
 
