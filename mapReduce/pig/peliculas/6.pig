@@ -4,3 +4,4 @@ movieV =  foreach g_movie generate group, AVG(movie.rating) AS (avgm);
 gruall = GROUP movieV ALL;
 min_dia = FOREACH gruall GENERATE movieV, MIN(movieV.avgm);
 DUMP min_dia;
+STORE min_dia INTO '/user/jcaladh/datasets/pig/output/pel6' USING PigStorage(',');

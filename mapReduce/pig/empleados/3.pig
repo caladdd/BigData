@@ -5,3 +5,4 @@ avgempl =  foreach group_emplead { A = Distinct emplead.SE;
 	   	   		   generate group, COUNT(A);
 				   };
 DUMP avgempl;
+STORE avgempl INTO '/user/jcaladh/datasets/pig/output/empl3' USING PigStorage(',');

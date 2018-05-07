@@ -4,3 +4,4 @@ movieV =  foreach g_movie generate group, AVG(movie.rating) AS (avgm);
 gruall = GROUP movieV ALL;
 max_dia = FOREACH gruall GENERATE movieV, MAX(movieV.avgm);
 DUMP max_dia;
+STORE max_dia INTO '/user/jcaladh/datasets/pig/output/pel5' USING PigStorage(',');

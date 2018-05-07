@@ -4,3 +4,4 @@ movieV =  foreach g_movie generate group, COUNT(movie.movie_id) AS (cont);
 gruall = GROUP movieV ALL;
 min_dia = FOREACH gruall GENERATE movieV, MIN(movieV.cont);
 DUMP min_dia;
+STORE min_dia INTO '/user/jcaladh/datasets/pig/output/pel3' USING PigStorage(',');
